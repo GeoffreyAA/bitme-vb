@@ -1,41 +1,41 @@
 VERSION 4.00
 Begin VB.Form frmAbout 
-   BorderStyle     =   1  'Fixed Single
+   BorderStyle     =   3  'Fixed Dialog
    Caption         =   "About..."
-   ClientHeight    =   5790
-   ClientLeft      =   2790
+   ClientHeight    =   5775
+   ClientLeft      =   3300
    ClientTop       =   2265
-   ClientWidth     =   4485
+   ClientWidth     =   4455
    ClipControls    =   0   'False
-   Height          =   6300
+   Height          =   6285
    Icon            =   "About.frx":0000
-   Left            =   2730
-   LinkTopic       =   "Form2"
+   Left            =   3240
+   LinkTopic       =   "Form1"
    LockControls    =   -1  'True
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   5790
-   ScaleMode       =   0  'User
-   ScaleWidth      =   4050
+   ScaleHeight     =   5775
+   ScaleWidth      =   4455
    ShowInTaskbar   =   0   'False
    Top             =   1815
-   Width           =   4605
-   Begin VB.Frame Frame2 
-      Height          =   5610
+   Visible         =   0   'False
+   Width           =   4575
+   Begin VB.Frame frameAbout 
+      Height          =   5535
       Left            =   120
       TabIndex        =   0
-      Top             =   40
-      Width           =   4245
-      Begin VB.Frame Frame1 
+      Top             =   120
+      Width           =   4215
+      Begin VB.Frame frameLine 
          Height          =   135
          Left            =   240
          TabIndex        =   2
-         Top             =   1320
+         Top             =   1380
          Width           =   3735
       End
-      Begin VB.Label Label4 
+      Begin VB.Label Label2 
+         Alignment       =   2  'Center
          AutoSize        =   -1  'True
-         BackStyle       =   0  'Transparent
          Caption         =   "Author: Geoffrey"
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Arial"
@@ -47,14 +47,15 @@ Begin VB.Form frmAbout
             Strikethrough   =   0   'False
          EndProperty
          Height          =   225
-         Left            =   820
+         Left            =   1455
          TabIndex        =   4
-         Top             =   840
-         Width           =   2595
+         Top             =   960
+         Width           =   1305
       End
-      Begin VB.Label Label2 
+      Begin VB.Label Label1 
+         Alignment       =   2  'Center
          AutoSize        =   -1  'True
-         Caption         =   "BitMe 1.15"
+         Caption         =   "BitMe 1.16"
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Arial"
             Size            =   15.75
@@ -67,11 +68,11 @@ Begin VB.Form frmAbout
          Height          =   360
          Left            =   1335
          TabIndex        =   3
-         Top             =   360
+         Top             =   480
          Width           =   1530
       End
-      Begin VB.Label Label1 
-         Caption         =   $"About.frx":0442
+      Begin VB.Label Label3 
+         Caption         =   $"About.frx":000C
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Arial"
             Size            =   8.25
@@ -81,11 +82,11 @@ Begin VB.Form frmAbout
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   3735
+         Height          =   3495
          Left            =   240
          TabIndex        =   1
          Top             =   1800
-         Width           =   3855
+         Width           =   3735
          WordWrap        =   -1  'True
       End
    End
@@ -99,17 +100,16 @@ Private Sub Form_KeyDown(KeyCode As Integer, Shift As Integer)
     If KeyCode = vbKeyEscape Then
         Unload frmAbout
     End If
-
+    
 End Sub
 Private Sub Form_Load()
-    
-    Left = (Screen.Width - Width) / 2
-    Top = (Screen.Height - Height) / 2
+
+    Call frmBitMe.p_centerWindow(frmAbout)
 
 End Sub
 Private Sub Form_Unload(Cancel As Integer)
 
-    SaveSetting "BitMe", "Settings", "Splash", "No"
-    frmBitMe.Visible = True
-
+    SaveSetting "BitMe", "Settings", "SeenSplash", "1"
+    frmBitMe.Show
+    
 End Sub

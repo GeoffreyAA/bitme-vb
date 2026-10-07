@@ -2,24 +2,102 @@ VERSION 4.00
 Begin VB.Form frmBitMe 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "BitMe [by Pancreas]"
-   ClientHeight    =   4095
-   ClientLeft      =   1215
-   ClientTop       =   1935
+   ClientHeight    =   5175
+   ClientLeft      =   1605
+   ClientTop       =   2235
    ClientWidth     =   8175
    ClipControls    =   0   'False
-   Height          =   4605
+   Height          =   5685
    Icon            =   "BitMe.frx":0000
    KeyPreview      =   -1  'True
-   Left            =   1155
+   Left            =   1545
    LinkTopic       =   "Form1"
    LockControls    =   -1  'True
    MaxButton       =   0   'False
-   MouseIcon       =   "BitMe.frx":57E2
-   ScaleHeight     =   4095
+   ScaleHeight     =   5175
    ScaleWidth      =   8175
-   Top             =   1485
+   Top             =   1785
    Width           =   8295
-   Begin VB.Frame RateFrame 
+   Begin VB.CheckBox chkCSize 
+      Caption         =   " &Custom "
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   255
+      Left            =   6960
+      TabIndex        =   3
+      Top             =   2040
+      Width           =   975
+   End
+   Begin VB.Frame frameCSize 
+      Caption         =   " Custom File Size / Date Rate "
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Arial"
+         Size            =   9
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   975
+      Left            =   120
+      TabIndex        =   51
+      Top             =   4080
+      Width           =   7935
+      Begin VB.ComboBox comboMedia 
+         Height          =   315
+         ItemData        =   "BitMe.frx":57E2
+         Left            =   240
+         List            =   "BitMe.frx":57FE
+         Style           =   2  'Dropdown List
+         TabIndex        =   4
+         Top             =   480
+         Width           =   2055
+      End
+      Begin VB.CommandButton btnAccept 
+         Caption         =   "OK"
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   375
+         Left            =   5280
+         TabIndex        =   6
+         Top             =   360
+         Width           =   2295
+      End
+      Begin VB.TextBox editCustomSize 
+         Alignment       =   2  'Center
+         Height          =   285
+         Left            =   2520
+         MaxLength       =   16
+         TabIndex        =   5
+         Top             =   480
+         Width           =   1455
+      End
+      Begin VB.Label labelCInfo 
+         AutoSize        =   -1  'True
+         Caption         =   "MB"
+         Height          =   195
+         Left            =   4080
+         TabIndex        =   52
+         Top             =   525
+         Width           =   240
+      End
+   End
+   Begin VB.Frame frameDRate 
       Caption         =   " Data Rate "
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "Arial"
@@ -32,11 +110,10 @@ Begin VB.Form frmBitMe
       EndProperty
       Height          =   1935
       Left            =   5040
-      TabIndex        =   37
+      TabIndex        =   26
       Top             =   2040
-      Visible         =   0   'False
       Width           =   3015
-      Begin VB.Label Label36 
+      Begin VB.Label Label21 
          AutoSize        =   -1  'True
          Caption         =   "Mbps"
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -50,11 +127,47 @@ Begin VB.Form frmBitMe
          EndProperty
          Height          =   300
          Left            =   1560
-         TabIndex        =   46
+         TabIndex        =   50
          Top             =   1395
          Width           =   660
       End
-      Begin VB.Label Mbps 
+      Begin VB.Label Label20 
+         AutoSize        =   -1  'True
+         Caption         =   "kbps"
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "MS Sans Serif"
+            Size            =   12
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   300
+         Left            =   1560
+         TabIndex        =   49
+         Top             =   870
+         Width           =   585
+      End
+      Begin VB.Label Label19 
+         AutoSize        =   -1  'True
+         Caption         =   "kBps"
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "MS Sans Serif"
+            Size            =   12
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   300
+         Left            =   1560
+         TabIndex        =   48
+         Top             =   360
+         Width           =   615
+      End
+      Begin VB.Label labelMbps 
          Alignment       =   1  'Right Justify
          AutoSize        =   -1  'True
          Caption         =   "0.00"
@@ -70,47 +183,11 @@ Begin VB.Form frmBitMe
          ForeColor       =   &H000000C0&
          Height          =   300
          Left            =   930
-         TabIndex        =   45
+         TabIndex        =   29
          Top             =   1395
          Width           =   540
       End
-      Begin VB.Label Label29 
-         AutoSize        =   -1  'True
-         Caption         =   "kBps"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "MS Sans Serif"
-            Size            =   12
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   300
-         Left            =   1560
-         TabIndex        =   41
-         Top             =   360
-         Width           =   615
-      End
-      Begin VB.Label Label30 
-         AutoSize        =   -1  'True
-         Caption         =   "kbps"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "MS Sans Serif"
-            Size            =   12
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   300
-         Left            =   1560
-         TabIndex        =   40
-         Top             =   870
-         Width           =   585
-      End
-      Begin VB.Label Kbit 
+      Begin VB.Label labelKbit 
          Alignment       =   1  'Right Justify
          AutoSize        =   -1  'True
          Caption         =   "0"
@@ -126,11 +203,11 @@ Begin VB.Form frmBitMe
          ForeColor       =   &H000000C0&
          Height          =   300
          Left            =   1305
-         TabIndex        =   39
+         TabIndex        =   28
          Top             =   870
          Width           =   165
       End
-      Begin VB.Label KBps 
+      Begin VB.Label labelKBps 
          Alignment       =   1  'Right Justify
          AutoSize        =   -1  'True
          Caption         =   "0"
@@ -146,82 +223,12 @@ Begin VB.Form frmBitMe
          ForeColor       =   &H000000C0&
          Height          =   300
          Left            =   1305
-         TabIndex        =   38
+         TabIndex        =   27
          Top             =   360
          Width           =   165
       End
    End
-   Begin VB.Frame OptionsFrame 
-      Caption         =   " Options "
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Arial"
-         Size            =   9
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   1815
-      Left            =   120
-      TabIndex        =   17
-      Top             =   120
-      Width           =   1215
-      Begin VB.CheckBox Check3 
-         Caption         =   " &Rate "
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Arial"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   255
-         Left            =   240
-         TabIndex        =   36
-         Top             =   1320
-         Width           =   750
-      End
-      Begin VB.CheckBox Check2 
-         Caption         =   " &Audio "
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Arial"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   255
-         Left            =   240
-         TabIndex        =   19
-         Top             =   840
-         Value           =   1  'Checked
-         Width           =   855
-      End
-      Begin VB.CheckBox Check1 
-         Caption         =   " &Video "
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Arial"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   255
-         Left            =   240
-         TabIndex        =   18
-         Top             =   360
-         Value           =   1  'Checked
-         Width           =   855
-      End
-   End
-   Begin VB.Frame SizeFrame 
+   Begin VB.Frame frameFSize 
       Caption         =   " Final File Size "
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "Arial"
@@ -234,10 +241,10 @@ Begin VB.Form frmBitMe
       EndProperty
       Height          =   1935
       Left            =   5040
-      TabIndex        =   13
+      TabIndex        =   14
       Top             =   2040
       Width           =   3015
-      Begin VB.Label Label19 
+      Begin VB.Label Label18 
          AutoSize        =   -1  'True
          Caption         =   "GB"
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -251,11 +258,11 @@ Begin VB.Form frmBitMe
          EndProperty
          Height          =   300
          Left            =   2280
-         TabIndex        =   28
+         TabIndex        =   47
          Top             =   1320
          Width           =   405
       End
-      Begin VB.Label Label18 
+      Begin VB.Label Label17 
          AutoSize        =   -1  'True
          Caption         =   "MB"
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -269,13 +276,13 @@ Begin VB.Form frmBitMe
          EndProperty
          Height          =   300
          Left            =   2280
-         TabIndex        =   27
+         TabIndex        =   46
          Top             =   840
          Width           =   405
       End
-      Begin VB.Label Label17 
+      Begin VB.Label Label16 
          AutoSize        =   -1  'True
-         Caption         =   "kB"
+         Caption         =   "KB"
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "MS Sans Serif"
             Size            =   12
@@ -287,11 +294,11 @@ Begin VB.Form frmBitMe
          EndProperty
          Height          =   300
          Left            =   2280
-         TabIndex        =   26
+         TabIndex        =   45
          Top             =   360
-         Width           =   330
+         Width           =   360
       End
-      Begin VB.Label GB 
+      Begin VB.Label labelGB 
          AutoSize        =   -1  'True
          Caption         =   "0.00"
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -306,11 +313,11 @@ Begin VB.Form frmBitMe
          ForeColor       =   &H000000C0&
          Height          =   300
          Left            =   240
-         TabIndex        =   16
+         TabIndex        =   25
          Top             =   1320
          Width           =   540
       End
-      Begin VB.Label MB 
+      Begin VB.Label labelMB 
          AutoSize        =   -1  'True
          Caption         =   "0.00"
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -325,11 +332,11 @@ Begin VB.Form frmBitMe
          ForeColor       =   &H000000C0&
          Height          =   300
          Left            =   240
-         TabIndex        =   15
+         TabIndex        =   24
          Top             =   840
          Width           =   540
       End
-      Begin VB.Label KB 
+      Begin VB.Label labelKB 
          AutoSize        =   -1  'True
          Caption         =   "0.00"
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -344,12 +351,12 @@ Begin VB.Form frmBitMe
          ForeColor       =   &H000000C0&
          Height          =   300
          Left            =   240
-         TabIndex        =   14
+         TabIndex        =   23
          Top             =   360
          Width           =   540
       End
    End
-   Begin VB.Frame TimeFrame 
+   Begin VB.Frame frameTime 
       Caption         =   " Duration "
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "Arial"
@@ -362,10 +369,48 @@ Begin VB.Form frmBitMe
       EndProperty
       Height          =   1935
       Left            =   120
-      TabIndex        =   8
+      TabIndex        =   13
       Top             =   2040
       Width           =   4815
-      Begin VB.Label Label34 
+      Begin VB.Label Label15 
+         Alignment       =   1  'Right Justify
+         AutoSize        =   -1  'True
+         Caption         =   "9 Hrs"
+         Height          =   195
+         Left            =   4170
+         TabIndex        =   44
+         Top             =   1560
+         Width           =   375
+      End
+      Begin VB.Label Label14 
+         AutoSize        =   -1  'True
+         Caption         =   "1 Min"
+         Height          =   195
+         Left            =   240
+         TabIndex        =   43
+         Top             =   1560
+         Width           =   390
+      End
+      Begin VB.Label Label13 
+         AutoSize        =   -1  'True
+         Caption         =   ":"
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   9
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00800000&
+         Height          =   225
+         Left            =   2345
+         TabIndex        =   42
+         Top             =   1560
+         Width           =   45
+      End
+      Begin VB.Label Label12 
          AutoSize        =   -1  'True
          BackStyle       =   0  'Transparent
          Caption         =   "[           ]"
@@ -381,30 +426,66 @@ Begin VB.Form frmBitMe
          ForeColor       =   &H00800000&
          Height          =   240
          Left            =   2002
-         TabIndex        =   44
+         TabIndex        =   41
          Top             =   1540
          Width           =   825
       End
-      Begin VB.Label Label33 
+      Begin VB.Label Label11 
+         Alignment       =   1  'Right Justify
          AutoSize        =   -1  'True
-         Caption         =   ":"
+         Caption         =   "Seconds"
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Arial"
-            Size            =   9
+            Size            =   9.75
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H00800000&
-         Height          =   225
-         Left            =   2345
-         TabIndex        =   43
-         Top             =   1560
-         Width           =   45
+         Height          =   240
+         Left            =   3795
+         TabIndex        =   40
+         Top             =   360
+         Width           =   765
       End
-      Begin VB.Label Clock 
+      Begin VB.Label Label10 
+         AutoSize        =   -1  'True
+         Caption         =   "Minutes"
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   9.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   1995
+         TabIndex        =   39
+         Top             =   360
+         Width           =   690
+      End
+      Begin VB.Label Label9 
+         AutoSize        =   -1  'True
+         Caption         =   "Hours"
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   9.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   480
+         TabIndex        =   38
+         Top             =   360
+         Width           =   510
+      End
+      Begin VB.Label labelTClock 
          Alignment       =   1  'Right Justify
          AutoSize        =   -1  'True
          Caption         =   "0   00"
@@ -420,102 +501,11 @@ Begin VB.Form frmBitMe
          ForeColor       =   &H00800000&
          Height          =   240
          Left            =   2145
-         TabIndex        =   42
+         TabIndex        =   22
          Top             =   1560
          Width           =   555
       End
-      Begin VB.Label Label26 
-         Alignment       =   1  'Right Justify
-         AutoSize        =   -1  'True
-         Caption         =   "Seconds"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Arial"
-            Size            =   9.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   240
-         Left            =   3795
-         TabIndex        =   35
-         Top             =   360
-         Width           =   765
-      End
-      Begin VB.Label Label25 
-         AutoSize        =   -1  'True
-         Caption         =   "Minutes"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Arial"
-            Size            =   9.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   240
-         Left            =   1995
-         TabIndex        =   34
-         Top             =   360
-         Width           =   690
-      End
-      Begin VB.Label Label24 
-         AutoSize        =   -1  'True
-         Caption         =   "Hours"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Arial"
-            Size            =   9.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   240
-         Left            =   480
-         TabIndex        =   33
-         Top             =   360
-         Width           =   510
-      End
-      Begin VB.Label Label16 
-         Alignment       =   1  'Right Justify
-         AutoSize        =   -1  'True
-         Caption         =   "9 Hrs"
-         Height          =   195
-         Left            =   4170
-         TabIndex        =   25
-         Top             =   1560
-         Width           =   375
-      End
-      Begin VB.Label Label15 
-         AutoSize        =   -1  'True
-         Caption         =   "1 Min"
-         Height          =   195
-         Left            =   240
-         TabIndex        =   24
-         Top             =   1560
-         Width           =   390
-      End
-      Begin ComctlLib.Slider Slider3 
-         Height          =   615
-         Left            =   120
-         TabIndex        =   12
-         Top             =   840
-         Width           =   4575
-         _ExtentX        =   8070
-         _ExtentY        =   1085
-         _Version        =   327682
-         LargeChange     =   30
-         Min             =   1
-         Max             =   540
-         SelStart        =   120
-         TickStyle       =   2
-         TickFrequency   =   60
-         Value           =   120
-      End
-      Begin VB.Label Sec 
+      Begin VB.Label labelTSec 
          Alignment       =   1  'Right Justify
          AutoSize        =   -1  'True
          Caption         =   "0"
@@ -531,11 +521,11 @@ Begin VB.Form frmBitMe
          ForeColor       =   &H00008000&
          Height          =   240
          Left            =   3555
-         TabIndex        =   11
+         TabIndex        =   21
          Top             =   360
          Width           =   135
       End
-      Begin VB.Label Min 
+      Begin VB.Label labelTMin 
          Alignment       =   1  'Right Justify
          AutoSize        =   -1  'True
          Caption         =   "0"
@@ -551,11 +541,11 @@ Begin VB.Form frmBitMe
          ForeColor       =   &H00008000&
          Height          =   240
          Left            =   1755
-         TabIndex        =   10
+         TabIndex        =   20
          Top             =   360
          Width           =   135
       End
-      Begin VB.Label Hrs 
+      Begin VB.Label labelTHrs 
          Alignment       =   1  'Right Justify
          AutoSize        =   -1  'True
          Caption         =   "0"
@@ -571,12 +561,28 @@ Begin VB.Form frmBitMe
          ForeColor       =   &H00008000&
          Height          =   240
          Left            =   240
-         TabIndex        =   9
+         TabIndex        =   19
          Top             =   360
          Width           =   135
       End
+      Begin ComctlLib.Slider sliderTime 
+         Height          =   615
+         Left            =   120
+         TabIndex        =   2
+         Top             =   840
+         Width           =   4575
+         _ExtentX        =   8070
+         _ExtentY        =   1085
+         _Version        =   327682
+         Min             =   1
+         Max             =   540
+         SelStart        =   1
+         TickStyle       =   2
+         TickFrequency   =   60
+         Value           =   1
+      End
    End
-   Begin VB.Frame AudioFrame 
+   Begin VB.Frame frameAudio 
       Caption         =   " Audio Bitrate "
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "Arial"
@@ -589,10 +595,29 @@ Begin VB.Form frmBitMe
       EndProperty
       Height          =   1815
       Left            =   5040
-      TabIndex        =   4
+      TabIndex        =   12
       Top             =   120
       Width           =   3015
-      Begin VB.Label Label23 
+      Begin VB.Label Label8 
+         Alignment       =   1  'Right Justify
+         AutoSize        =   -1  'True
+         Caption         =   "640 kbps"
+         Height          =   195
+         Left            =   2100
+         TabIndex        =   37
+         Top             =   1440
+         Width           =   660
+      End
+      Begin VB.Label Label7 
+         AutoSize        =   -1  'True
+         Caption         =   "32 kbps"
+         Height          =   195
+         Left            =   240
+         TabIndex        =   36
+         Top             =   1440
+         Width           =   570
+      End
+      Begin VB.Label Label6 
          Alignment       =   1  'Right Justify
          AutoSize        =   -1  'True
          Caption         =   "kBps"
@@ -607,11 +632,11 @@ Begin VB.Form frmBitMe
          EndProperty
          Height          =   240
          Left            =   2325
-         TabIndex        =   32
+         TabIndex        =   35
          Top             =   360
          Width           =   450
       End
-      Begin VB.Label Label22 
+      Begin VB.Label Label5 
          AutoSize        =   -1  'True
          Caption         =   "kbps"
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -625,30 +650,11 @@ Begin VB.Form frmBitMe
          EndProperty
          Height          =   240
          Left            =   680
-         TabIndex        =   31
+         TabIndex        =   34
          Top             =   360
          Width           =   420
       End
-      Begin VB.Label Label14 
-         Alignment       =   1  'Right Justify
-         AutoSize        =   -1  'True
-         Caption         =   "640 kbps"
-         Height          =   195
-         Left            =   2100
-         TabIndex        =   23
-         Top             =   1440
-         Width           =   660
-      End
-      Begin VB.Label Label13 
-         AutoSize        =   -1  'True
-         Caption         =   "32 kbps"
-         Height          =   195
-         Left            =   240
-         TabIndex        =   22
-         Top             =   1440
-         Width           =   570
-      End
-      Begin VB.Label Label4 
+      Begin VB.Label labelA2 
          Alignment       =   1  'Right Justify
          AutoSize        =   -1  'True
          Caption         =   "0"
@@ -664,11 +670,11 @@ Begin VB.Form frmBitMe
          ForeColor       =   &H00C00000&
          Height          =   240
          Left            =   2095
-         TabIndex        =   7
+         TabIndex        =   18
          Top             =   360
          Width           =   135
       End
-      Begin VB.Label Audio 
+      Begin VB.Label labelA1 
          Alignment       =   1  'Right Justify
          AutoSize        =   -1  'True
          Caption         =   "0"
@@ -684,14 +690,14 @@ Begin VB.Form frmBitMe
          ForeColor       =   &H00C00000&
          Height          =   240
          Left            =   480
-         TabIndex        =   6
+         TabIndex        =   17
          Top             =   360
          Width           =   135
       End
-      Begin ComctlLib.Slider Slider2 
+      Begin ComctlLib.Slider sliderAudio 
          Height          =   630
          Left            =   120
-         TabIndex        =   5
+         TabIndex        =   1
          Top             =   720
          Width           =   2775
          _ExtentX        =   4895
@@ -699,13 +705,11 @@ Begin VB.Form frmBitMe
          _Version        =   327682
          LargeChange     =   1
          Max             =   18
-         SelStart        =   10
          TickStyle       =   2
          TickFrequency   =   18
-         Value           =   10
       End
    End
-   Begin VB.Frame VideoFrame 
+   Begin VB.Frame frameVideo 
       Caption         =   " Video Bitrate "
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "Arial"
@@ -718,10 +722,29 @@ Begin VB.Form frmBitMe
       EndProperty
       Height          =   1815
       Left            =   1440
-      TabIndex        =   0
+      TabIndex        =   11
       Top             =   120
       Width           =   3495
-      Begin VB.Label Label21 
+      Begin VB.Label Label4 
+         Alignment       =   1  'Right Justify
+         AutoSize        =   -1  'True
+         Caption         =   "25 Mbps"
+         Height          =   195
+         Left            =   2610
+         TabIndex        =   33
+         Top             =   1440
+         Width           =   615
+      End
+      Begin VB.Label Label3 
+         AutoSize        =   -1  'True
+         Caption         =   "0 kbps"
+         Height          =   195
+         Left            =   240
+         TabIndex        =   32
+         Top             =   1440
+         Width           =   480
+      End
+      Begin VB.Label Label2 
          Alignment       =   1  'Right Justify
          AutoSize        =   -1  'True
          Caption         =   "kBps"
@@ -736,11 +759,11 @@ Begin VB.Form frmBitMe
          EndProperty
          Height          =   240
          Left            =   2790
-         TabIndex        =   30
+         TabIndex        =   31
          Top             =   360
          Width           =   450
       End
-      Begin VB.Label Label20 
+      Begin VB.Label Label1 
          AutoSize        =   -1  'True
          Caption         =   "kbps"
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -752,33 +775,13 @@ Begin VB.Form frmBitMe
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H00000000&
          Height          =   240
          Left            =   915
-         TabIndex        =   29
+         TabIndex        =   30
          Top             =   360
          Width           =   420
       End
-      Begin VB.Label Label12 
-         Alignment       =   1  'Right Justify
-         AutoSize        =   -1  'True
-         Caption         =   "25 Mbps"
-         Height          =   195
-         Left            =   2610
-         TabIndex        =   21
-         Top             =   1440
-         Width           =   615
-      End
-      Begin VB.Label Label11 
-         AutoSize        =   -1  'True
-         Caption         =   "0 kbps"
-         Height          =   195
-         Left            =   240
-         TabIndex        =   20
-         Top             =   1440
-         Width           =   480
-      End
-      Begin VB.Label Label2 
+      Begin VB.Label labelV2 
          Alignment       =   1  'Right Justify
          AutoSize        =   -1  'True
          Caption         =   "0.0"
@@ -794,11 +797,11 @@ Begin VB.Form frmBitMe
          ForeColor       =   &H00C00000&
          Height          =   240
          Left            =   2385
-         TabIndex        =   3
+         TabIndex        =   16
          Top             =   360
          Width           =   315
       End
-      Begin VB.Label Video 
+      Begin VB.Label labelV1 
          Alignment       =   1  'Right Justify
          AutoSize        =   -1  'True
          Caption         =   "0"
@@ -814,14 +817,14 @@ Begin VB.Form frmBitMe
          ForeColor       =   &H00C00000&
          Height          =   240
          Left            =   720
-         TabIndex        =   2
+         TabIndex        =   15
          Top             =   360
          Width           =   135
       End
-      Begin ComctlLib.Slider Slider1 
+      Begin ComctlLib.Slider sliderVideo 
          Height          =   630
          Left            =   120
-         TabIndex        =   1
+         TabIndex        =   0
          Top             =   720
          Width           =   3255
          _ExtentX        =   5741
@@ -829,101 +832,484 @@ Begin VB.Form frmBitMe
          _Version        =   327682
          LargeChange     =   50
          Max             =   25000
-         SelStart        =   1500
          TickStyle       =   2
          TickFrequency   =   25000
-         Value           =   1500
+      End
+   End
+   Begin VB.Frame frameOptions 
+      Caption         =   " Options "
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Arial"
+         Size            =   9
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   1815
+      Left            =   120
+      TabIndex        =   10
+      Top             =   120
+      Width           =   1215
+      Begin VB.CheckBox chkDRate 
+         Caption         =   " &Rate "
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   255
+         Left            =   240
+         TabIndex        =   9
+         Top             =   1320
+         Width           =   750
+      End
+      Begin VB.CheckBox chkAudio 
+         Caption         =   " &Audio "
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   255
+         Left            =   240
+         TabIndex        =   8
+         Top             =   840
+         Width           =   855
+      End
+      Begin VB.CheckBox chkVideo 
+         Caption         =   " &Video "
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   255
+         Left            =   240
+         TabIndex        =   7
+         Top             =   360
+         Width           =   855
       End
    End
 End
 Attribute VB_Name = "frmBitMe"
 Attribute VB_Creatable = False
 Attribute VB_Exposed = False
-Public Cut As String
-Private Sub Check1_Click()
+Option Explicit
 
+Private Video As Integer
+Private Audio As Single
+
+Private Minutes As Integer
+Private Seconds As Integer
+
+Private FileSize As Double
+
+Private Media(0 To 7) As Integer
+Private Cut As String
+Private Function calcAVIOverhead(ByVal ForceVideo As Boolean) As Long
+
+    ' Video Enabled
+    If ForceVideo Or Video > 0 Then
+    
+        If Audio > 0 Then
+            calcAVIOverhead = Minutes * 581913
+            Exit Function
+        Else
+            calcAVIOverhead = Minutes * 293794
+            Exit Function
+        End If
+        
+    Else ' Video Disabled
+    
+        calcAVIOverhead = 0
+    
+    End If
+    
+End Function
+Private Sub changeCombo()
+
+    editCustomSize.Text = Media(comboMedia.ListIndex)
+    
+End Sub
+Public Sub p_centerWindow(xForm As Object)
+
+    xForm.Left = (Screen.Width - xForm.Width) / 2
+    xForm.Top = (Screen.Height - xForm.Height) / 2
+
+End Sub
+Private Sub i_toggleCheck(ByVal Path As Integer)
+
+    Select Case Path
+
+    '---------------------------------------------
+       
+        Case 1 ' Video CheckBox
+        
+            If chkVideo Then
+                Call i_dragSlider(1)
+                sliderVideo.Enabled = True
+                labelV1.Enabled = True
+                labelV2.Enabled = True
+                chkCSize.Enabled = True
+            Else
+                Video = 0
+                sliderVideo.Enabled = False
+                labelV1.Enabled = False
+                labelV2.Enabled = False
+                chkCSize.Enabled = False
+            End If
+            
+            Call i_toggleCheck(4)
+            
+    '---------------------------------------------
+    
+        Case 2 ' Audio CheckBox
+
+            If chkAudio Then
+                Call i_dragSlider(2)
+                sliderAudio.Enabled = True
+                labelA1.Enabled = True
+                labelA2.Enabled = True
+            Else
+                Audio = 0
+                sliderAudio.Enabled = False
+                labelA1.Enabled = False
+                labelA2.Enabled = False
+            End If
+            
+    '---------------------------------------------
+    
+        Case 3 ' Data Rate CheckBox
+    
+            If chkDRate Then
+                frameFSize.Visible = False
+                frameDRate.Visible = True
+                frameCSize.Caption = " Custom Data Rate "
+                labelCInfo = "kBps"
+            Else
+                frameFSize.Visible = True
+                frameDRate.Visible = False
+                frameCSize.Caption = " Custom File Size "
+                labelCInfo = "MB"
+            End If
+            
+    '---------------------------------------------
+    
+        Case 4
+            If chkVideo And chkCSize Then
+                If Not IsNumeric(editCustomSize.Text) Then
+                    Call changeCombo
+                End If
+                editCustomSize.Text = Trim(editCustomSize.Text)
+                frameCSize.Enabled = True
+                frameCSize.Visible = True
+                frmBitMe.Height = 5685
+                Dim Pos As Integer
+                Pos = Screen.Height - frmBitMe.Height
+                If frmBitMe.Top > Pos Then
+                    frmBitMe.Top = Pos
+                End If
+            Else
+                frameCSize.Enabled = False
+                frameCSize.Visible = False
+                frmBitMe.Height = 4580
+            End If
+            
+    '---------------------------------------------
+    
+    End Select
+    
+    Call calcFileSizes
+    
+End Sub
+Private Sub i_dragSlider(ByVal Path As Integer)
+
+    Select Case Path
+    
+    '---------------------------------------------------------------------
+        
+        Case 1 ' Video Slider
+        
+            Video = sliderVideo.Value
+            
+            labelV1 = Video                         ' Video in kbps
+            labelV2 = Format(Video / 8, "0.0")      ' Video in kBps
+            
+    '---------------------------------------------------------------------
+    
+        Case 2 ' Audio Slider
+        
+            Select Case sliderAudio.Value
+                Case 0 To 4
+                    Audio = sliderAudio.Value * 8 + 32
+                Case 5 To 8
+                    Audio = sliderAudio.Value * 16
+                Case 9 To 12
+                    Audio = (sliderAudio.Value - 4) * 32
+                Case Else
+                    Audio = (sliderAudio.Value - 8) * 64
+            End Select
+            
+            labelA1 = Audio                         ' Audio in kbps
+            labelA2 = Audio \ 8                     ' Audio in kBps
+            
+    '---------------------------------------------------------------------
+            
+        Case 3 ' Time Slider
+        
+            Minutes = sliderTime.Value
+            Seconds = Minutes * 60
+            
+            labelTHrs = Minutes \ 60
+            labelTMin = Minutes
+            labelTSec = Seconds
+            
+            ' ----- Digital Clock -----
+            Dim CMin As Integer
+            CMin = Minutes Mod 60
+    
+            If CMin > 9 Then
+                labelTClock = labelTHrs & "   " & CMin
+            Else
+                labelTClock = labelTHrs & "   0" & CMin
+            End If
+            
+    '---------------------------------------------------------------------
+            
+    End Select
+
+    Call calcFileSizes
+    
+End Sub
+Private Sub calcFileSizes()
+    
+    ' File Size [bits] = (Video [bits] + Audio [bits]) * Seconds + Overhead [bits]
+    ' Divide FS [bits] by 8192 --> FS in KB
+    
+    FileSize = (Video + Audio) * 1000 * Seconds + calcAVIOverhead(False)
+    
+    If chkDRate = 0 Then
+        
+        labelKB = Format(FileSize / 8192, Cut)
+        labelMB = Format(FileSize / 8192 / 1024, Cut)
+        labelGB = Format(FileSize / 8192 / 1024 / 1024, Cut)
+        
+    Else
+    
+        If Seconds > 0 Then ' Prevent Division-by-Zero
+            labelKBps = Format(FileSize / Seconds / 8192, "Fixed")
+            labelKbit = CInt(FileSize / Seconds / 1000)
+            labelMbps = Format(FileSize / Seconds / 1000 / 1000, "Fixed")
+        Else
+            labelKBps = Format(0, "Fixed")
+            labelKbit = 0
+            labelMbps = Format(0, "Fixed")
+        End If
+        
+    End If
+
+End Sub
+Private Sub InitProgram()
+
+    sliderVideo.Value = 2000
+    sliderAudio.Value = 10
+    sliderTime.Value = 120
+    
+    comboMedia.ListIndex = 2
+    
+    chkVideo = 1
+    chkAudio = 1
+    chkDRate = 0
+    chkCSize = 0
+    
     Call i_toggleCheck(1)
-    
-End Sub
-Private Sub Check1_GotFocus()
-
-    OptionsFrame.Font.bold = True
-
-End Sub
-Private Sub Check1_LostFocus()
-
-    OptionsFrame.Font.bold = False
-
-End Sub
-
-
-Private Sub Check2_Click()
-    
     Call i_toggleCheck(2)
-    
-End Sub
-Private Sub Check2_GotFocus()
-
-    OptionsFrame.Font.bold = True
-    
-End Sub
-
-
-Private Sub Check2_LostFocus()
-
-    OptionsFrame.Font.bold = False
-
-End Sub
-
-
-Private Sub Check3_Click()
-    
     Call i_toggleCheck(3)
     
+    Call p_centerWindow(frmBitMe)
+    
 End Sub
-Private Sub Check3_GotFocus()
+Private Sub selAllText(xEdit As Object)
 
-    OptionsFrame.Font.bold = True
-
-End Sub
-
-
-Private Sub Check3_LostFocus()
-
-    OptionsFrame.Font.bold = False
+    xEdit.SelStart = 0
+    xEdit.SelLength = Len(xEdit.Text)
 
 End Sub
+Private Sub btnAccept_Click()
 
+    Call getVideoBitrate
+    
+End Sub
+
+Private Sub btnAccept_GotFocus()
+
+    frameCSize.Font.bold = True
+
+End Sub
+
+
+Private Sub btnAccept_LostFocus()
+
+    frameCSize.Font.bold = False
+
+End Sub
+
+
+Private Sub chkAudio_Click()
+
+    Call i_toggleCheck(2)
+
+End Sub
+
+Private Sub chkAudio_GotFocus()
+
+    frameOptions.Font.bold = True
+
+End Sub
+
+
+Private Sub chkAudio_LostFocus()
+
+    frameOptions.Font.bold = False
+
+End Sub
+
+
+Private Sub chkCSize_Click()
+
+    Call i_toggleCheck(4)
+
+End Sub
+Private Sub chkDRate_Click()
+
+    Call i_toggleCheck(3)
+
+End Sub
+
+Private Sub chkDRate_GotFocus()
+
+    frameOptions.Font.bold = True
+
+End Sub
+
+
+Private Sub chkDRate_LostFocus()
+
+    frameOptions.Font.bold = False
+
+End Sub
+
+
+Private Sub chkVideo_Click()
+
+    Call i_toggleCheck(1)
+
+End Sub
+
+Private Sub chkVideo_GotFocus()
+
+    frameOptions.Font.bold = True
+
+End Sub
+
+
+Private Sub chkVideo_LostFocus()
+
+    frameOptions.Font.bold = False
+
+End Sub
+
+Private Sub comboMedia_Click()
+
+    Call changeCombo
+    
+End Sub
+Private Sub comboMedia_GotFocus()
+
+    frameCSize.Font.bold = True
+
+End Sub
+
+
+Private Sub comboMedia_LostFocus()
+
+    frameCSize.Font.bold = False
+
+End Sub
+
+
+Private Sub editCustomSize_GotFocus()
+
+    frameCSize.Font.bold = True
+    Call selAllText(editCustomSize)
+
+End Sub
+Private Sub editCustomSize_KeyDown(KeyCode As Integer, Shift As Integer)
+
+    If KeyCode = vbKeyReturn Then
+        Call getVideoBitrate
+    End If
+
+End Sub
+Private Sub editCustomSize_LostFocus()
+
+    frameCSize.Font.bold = False
+
+End Sub
 
 Private Sub Form_KeyDown(KeyCode As Integer, Shift As Integer)
-    
+
     Select Case KeyCode
-            
-        ' <V> - Video Bitrate
+    
+        ' [V] -- Video Bitrate
         Case vbKeyV
-            If Check1 Then
-                Check1 = 0
+            If chkVideo Then
+                chkVideo = 0
             Else
-                Check1 = 1
+                chkVideo = 1
             End If
             
-        ' <A> - Audio Bitrate
+        ' [A] -- Audio Bitrate
         Case vbKeyA
-            If Check2 Then
-                Check2 = 0
+            If chkAudio Then
+                chkAudio = 0
             Else
-                Check2 = 1
+                chkAudio = 1
             End If
             
-        ' <R> - Data Rate
+        ' [R] -- Data Rate
         Case vbKeyR
-            If Check3 Then
-                Check3 = 0
+            If chkDRate Then
+                chkDRate = 0
             Else
-                Check3 = 1
+                chkDRate = 1
             End If
             
-        ' <G> - Group Digits
+        ' [C] -- Custom
+        Case vbKeyC
+            If chkCSize.Enabled Then
+                If chkCSize Then
+                    chkCSize = 0
+                Else
+                    chkCSize = 1
+                End If
+            End If
+            
+        ' [G] -- Digit Grouping
         Case vbKeyG
             If Cut = "Standard" Then
                 Cut = "Fixed"
@@ -931,297 +1317,177 @@ Private Sub Form_KeyDown(KeyCode As Integer, Shift As Integer)
                 Cut = "Standard"
             End If
             
-            Call c_whatCalc
+            Call calcFileSizes
             
-        ' <F5> - Refresh BitMe
+        ' [F5] -- Refresh BitMe
         Case vbKeyF5
-            Unload frmBitMe
-            Load frmBitMe
+            Call InitProgram
             
-        ' <ESC> - Close BitMe
+        ' [ESC] -- Close BitMe
         Case vbKeyEscape
             Unload frmBitMe
             
     End Select
-            
+
 End Sub
 Private Sub Form_Load()
-
-    Left = (Screen.Width - Width) / 2
-    Top = (Screen.Height - Height) / 2
-        
-    Dim ShowSplash As String
-    Let ShowSplash = GetSetting("BitMe", "Settings", "Splash", "Yes")
     
-    If ShowSplash = "Yes" Then
-        frmBitMe.Visible = False
-        frmAbout.Visible = True
-    Else
-        frmBitMe.Visible = True
-        frmAbout.Visible = False
-        Unload frmAbout
+    If GetSetting("BitMe", "Settings", "SeenSplash", "0") = "0" Then
+        frmAbout.Show
+        frmBitMe.Hide
     End If
+    
+    ' Setup Media Sizes Array
+    Media(0) = 350
+    Media(1) = 650
+    Media(2) = 700
+    Media(3) = 880
+    Media(4) = 1100
+    Media(5) = 1466
+    Media(6) = 2200
+    Media(7) = 4400
     
     Cut = "Standard"
     
-    ' Initialize Values
-    For i = 3 To 1 Step -1
-    
-        Call i_dragSlider(i)
-        Call i_toggleCheck(i)
-    
-    Next i
+    Call InitProgram
     
 End Sub
+Private Sub sliderAudio_Change()
 
-Private Sub Slider1_Change()
+    Call i_dragSlider(2)
+
+End Sub
+
+Private Sub sliderAudio_GotFocus()
+
+    frameAudio.Font.bold = True
+
+End Sub
+
+
+Private Sub sliderAudio_LostFocus()
+
+    frameAudio.Font.bold = False
+
+End Sub
+
+
+Private Sub sliderAudio_Scroll()
+
+    Call i_dragSlider(2)
+
+End Sub
+Private Sub sliderTime_Change()
+
+    Call i_dragSlider(3)
+
+End Sub
+
+Private Sub sliderTime_GotFocus()
+
+    frameTime.Font.bold = True
+
+End Sub
+
+
+Private Sub sliderTime_LostFocus()
+
+    frameTime.Font.bold = False
+
+End Sub
+
+
+Private Sub sliderTime_Scroll()
+
+    Call i_dragSlider(3)
+
+End Sub
+
+Private Sub sliderVideo_Change()
+
+    Call i_dragSlider(1)
+
+End Sub
+Private Sub sliderVideo_GotFocus()
+
+    frameVideo.Font.bold = True
+
+End Sub
+
+Private Sub sliderVideo_LostFocus()
+
+    frameVideo.Font.bold = False
+
+End Sub
+Private Sub sliderVideo_Scroll()
 
     Call i_dragSlider(1)
 
 End Sub
 
-Private Sub Slider1_GotFocus()
-
-    VideoFrame.Font.bold = True
-
-End Sub
-Private Sub Slider1_LostFocus()
-
-    VideoFrame.Font.bold = False
-
-End Sub
 
 
+Private Function calcVideoBitrateFromFS(ByVal CustomMB As Double) As Integer
 
-
-
-Private Sub Slider1_Scroll()
-
-    Call i_dragSlider(1)
+    Dim TotalBits As Double
+    Dim VideoBits As Double
+    Dim AudioBits As Double
     
-End Sub
-Private Sub Slider2_Change()
-
-    Call i_dragSlider(2)
-        
-End Sub
-Private Sub Slider2_GotFocus()
-
-    AudioFrame.Font.bold = True
-
-End Sub
-
-
-Private Sub Slider2_LostFocus()
-
-    AudioFrame.Font.bold = False
-
-End Sub
-
-
-Private Sub Slider2_Scroll()
+    TotalBits = CustomMB * 1024 * 1024 * 8 - calcAVIOverhead(True)
+    AudioBits = Audio * 1000 * Seconds
     
-    Call i_dragSlider(2)
-    
-End Sub
-Private Sub Slider3_Change()
+    VideoBits = (TotalBits - AudioBits) / (CDbl(Seconds) * 1000)
 
-    Call i_dragSlider(3)
-
-End Sub
-Private Sub Slider3_GotFocus()
-    
-    TimeFrame.Font.bold = True
-    
-End Sub
-
-
-Private Sub Slider3_LostFocus()
-
-    TimeFrame.Font.bold = False
-    
-End Sub
-
-
-Private Sub Slider3_Scroll()
-
-    Call i_dragSlider(3)
-
-End Sub
-Public Sub c_whatCalc()
-
-    If Check1 Then
-    
-        ' Video + Audio Enabled
-        If Check2 Then
-            Call c_fileSizes(Video, Audio)
-            Exit Sub
-            
-        ' Only Video Enabled
-        Else
-            Call c_fileSizes(Video, 0)
-            Exit Sub
-            
-        End If
-        
-    Else
-    
-        ' Only Audio Enabled
-        If Check2 Then
-            Call c_fileSizes(0, Audio)
-            Exit Sub
-            
-        ' Video + Audio Disabled
-        Else
-            Call c_fileSizes(0, 0)
-        End If
-        
+    If VideoBits < 0 Then
+        VideoBits = 0
     End If
     
-End Sub
-Static Sub c_fileSizes(VideoBitrate As Long, AudioBitrate As Integer)
+    calcVideoBitrateFromFS = CInt(VideoBits)
     
-    Dim Overhead As Long
-    Dim FileSize As Double
+End Function
+Private Function calcVideoBitrateFromDR(ByVal CustomKBps As Double) As Integer
+
+    calcVideoBitrateFromDR = calcVideoBitrateFromFS(CustomKBps * Seconds / 1024)
+
+End Function
+Private Sub getVideoBitrate()
+
+    On Error GoTo ErrorHandler
     
-    ' AVI Overhead
-    If Check1 And VideoBitrate > 0 Then
+    Dim CustomFS As Double
+    Dim VideoBitrate As Integer
     
-        If Check2 Then
-            Overhead = Slider3.Value * 720896
-        Else
-            Overhead = Slider3.Value * 327680
-        End If
-        
+    If IsNumeric(editCustomSize.Text) Then
+        CustomFS = editCustomSize.Text
     Else
-        Overhead = 0
+        GoTo ErrorHandler
     End If
     
-    ' File Size in Bits = (Video in Bits + Audio in Bits) * Seconds + Overhead in Bits
-    FileSize = ((VideoBitrate + AudioBitrate) * 1000 * Sec + Overhead) / 8192
-    
-    If Check3 = 0 Then
-    
-        KB = Format(FileSize, Cut)
-        MB = Format(FileSize / 1024, Cut)
-        GB = Format(FileSize / 1048576, Cut)
-        Exit Sub
-        
+    If chkDRate Then
+        VideoBitrate = calcVideoBitrateFromDR(CustomFS)
     Else
-        
-        KBps = CInt(FileSize / Sec)
-        Kbit = KBps * 8
-        Mbps = Format(Kbit / 1000, Cut)
-
+        VideoBitrate = calcVideoBitrateFromFS(CustomFS)
     End If
+    
+    ' Does it fall within Slider bounds?
+    If sliderVideo.Min < VideoBitrate And VideoBitrate <= sliderVideo.Max Then
+        sliderVideo.Value = VideoBitrate
+        Call i_dragSlider(1)
+    Else
+        GoTo ErrorHandler
+    End If
+    
+    editCustomSize.Text = Trim(editCustomSize.Text)
+    Call selAllText(editCustomSize)
+    editCustomSize.SetFocus
+    
+Exit Sub
 
-End Sub
-Public Sub i_toggleCheck(ByVal WhichCheck As Integer)
+' ------------------------------------------
 
-    Select Case WhichCheck
-
-    '---------------------------------------------
-       
-        Case 1 ' Video CheckBox
-        
-            If Check1 Then
-                Slider1.Enabled = True
-                Video.Enabled = True
-                Label2.Enabled = True
-            Else
-                Slider1.Enabled = False
-                Video.Enabled = False
-                Label2.Enabled = False
-            End If
-            
-    '---------------------------------------------
-    
-        Case 2 ' Audio CheckBox
-    
-            If Check2 Then
-                Slider2.Enabled = True
-                Audio.Enabled = True
-                Label4.Enabled = True
-            Else
-                Slider2.Enabled = False
-                Audio.Enabled = False
-                Label4.Enabled = False
-            End If
-            
-    '---------------------------------------------
-    
-        Case 3 ' Data Rate CheckBox
-    
-            If Check3 Then
-                SizeFrame.Visible = False
-                RateFrame.Visible = True
-            Else
-                SizeFrame.Visible = True
-                RateFrame.Visible = False
-            End If
-            
-    '---------------------------------------------
-            
-    End Select
-    
-    Call c_whatCalc
+ErrorHandler:
+    editCustomSize.Text = "Invalid"
+    Call selAllText(editCustomSize)
+    editCustomSize.SetFocus
     
 End Sub
-Public Sub i_dragSlider(ByVal WhichSlider As Integer)
-
-    Select Case WhichSlider
-        
-    '---------------------------------------------------------------------
-        
-        Case 1 ' Video Slider
-        
-            Video = Slider1.Value                       ' Video in kbps
-            Label2 = Format(Slider1.Value / 8, "0.0")   ' Video in KBps
-            
-    '---------------------------------------------------------------------
-    
-        Case 2 ' Audio Slider
-        
-            Select Case Slider2.Value
-                Case 0 To 4
-                    Audio = Slider2.Value * 8 + 32
-                Case 5 To 8
-                    Audio = Slider2.Value * 16
-                Case 9 To 12
-                    Audio = (Slider2.Value - 4) * 32
-                Case Else
-                    Audio = (Slider2.Value - 8) * 64
-            End Select
-    
-            Label4 = Audio \ 8
-            
-    '---------------------------------------------------------------------
-            
-        Case 3 ' Time Slider
-        
-            Dim Minutes As Integer
-            
-            Hrs = Slider3.Value \ 60        ' Hours Label
-            Min = Slider3.Value             ' Minutes Label
-            Sec = Slider3.Value * 60        ' Seconds Label
-        
-            ' ---------------
-            '  Clock Display
-            ' ---------------
-    
-            Minutes = Slider3.Value Mod 60
-    
-            If Minutes < 10 Then
-                Clock = Hrs & "   0" & Minutes
-            Else
-                Clock = Hrs & "   " & Minutes
-            End If
-            
-    '---------------------------------------------------------------------
-            
-    End Select
-
-    Call c_whatCalc
-    
-End Sub
-
