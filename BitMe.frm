@@ -1,4 +1,5 @@
-VERSION 4.00
+VERSION 5.00
+Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.OCX"
 Begin VB.Form frmBitMe 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "BitMe [by Pancreas]"
@@ -7,20 +8,17 @@ Begin VB.Form frmBitMe
    ClientTop       =   2235
    ClientWidth     =   8175
    ClipControls    =   0   'False
-   Height          =   5685
    Icon            =   "BitMe.frx":0000
    KeyPreview      =   -1  'True
-   Left            =   1545
    LinkTopic       =   "Form1"
    LockControls    =   -1  'True
    MaxButton       =   0   'False
+   PaletteMode     =   1  'UseZOrder
    ScaleHeight     =   5175
    ScaleWidth      =   8175
-   Top             =   1785
-   Width           =   8295
    Begin VB.CheckBox chkCSize 
       Caption         =   " &Custom "
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+      BeginProperty Font 
          Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
@@ -37,7 +35,7 @@ Begin VB.Form frmBitMe
    End
    Begin VB.Frame frameCSize 
       Caption         =   " Custom File Size / Date Rate "
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+      BeginProperty Font 
          Name            =   "Arial"
          Size            =   9
          Charset         =   0
@@ -63,7 +61,7 @@ Begin VB.Form frmBitMe
       End
       Begin VB.CommandButton btnAccept 
          Caption         =   "OK"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         BeginProperty Font 
             Name            =   "Arial"
             Size            =   8.25
             Charset         =   0
@@ -99,7 +97,7 @@ Begin VB.Form frmBitMe
    End
    Begin VB.Frame frameDRate 
       Caption         =   " Data Rate "
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+      BeginProperty Font 
          Name            =   "Arial"
          Size            =   9
          Charset         =   0
@@ -116,7 +114,7 @@ Begin VB.Form frmBitMe
       Begin VB.Label Label21 
          AutoSize        =   -1  'True
          Caption         =   "Mbps"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         BeginProperty Font 
             Name            =   "MS Sans Serif"
             Size            =   12
             Charset         =   0
@@ -134,7 +132,7 @@ Begin VB.Form frmBitMe
       Begin VB.Label Label20 
          AutoSize        =   -1  'True
          Caption         =   "kbps"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         BeginProperty Font 
             Name            =   "MS Sans Serif"
             Size            =   12
             Charset         =   0
@@ -152,7 +150,7 @@ Begin VB.Form frmBitMe
       Begin VB.Label Label19 
          AutoSize        =   -1  'True
          Caption         =   "kBps"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         BeginProperty Font 
             Name            =   "MS Sans Serif"
             Size            =   12
             Charset         =   0
@@ -171,7 +169,7 @@ Begin VB.Form frmBitMe
          Alignment       =   1  'Right Justify
          AutoSize        =   -1  'True
          Caption         =   "0.00"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         BeginProperty Font 
             Name            =   "MS Sans Serif"
             Size            =   12
             Charset         =   0
@@ -191,7 +189,7 @@ Begin VB.Form frmBitMe
          Alignment       =   1  'Right Justify
          AutoSize        =   -1  'True
          Caption         =   "0"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         BeginProperty Font 
             Name            =   "MS Sans Serif"
             Size            =   12
             Charset         =   0
@@ -211,7 +209,7 @@ Begin VB.Form frmBitMe
          Alignment       =   1  'Right Justify
          AutoSize        =   -1  'True
          Caption         =   "0"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         BeginProperty Font 
             Name            =   "MS Sans Serif"
             Size            =   12
             Charset         =   0
@@ -230,7 +228,7 @@ Begin VB.Form frmBitMe
    End
    Begin VB.Frame frameFSize 
       Caption         =   " Final File Size "
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+      BeginProperty Font 
          Name            =   "Arial"
          Size            =   9
          Charset         =   0
@@ -247,7 +245,7 @@ Begin VB.Form frmBitMe
       Begin VB.Label Label18 
          AutoSize        =   -1  'True
          Caption         =   "GB"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         BeginProperty Font 
             Name            =   "MS Sans Serif"
             Size            =   12
             Charset         =   0
@@ -265,7 +263,7 @@ Begin VB.Form frmBitMe
       Begin VB.Label Label17 
          AutoSize        =   -1  'True
          Caption         =   "MB"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         BeginProperty Font 
             Name            =   "MS Sans Serif"
             Size            =   12
             Charset         =   0
@@ -283,7 +281,7 @@ Begin VB.Form frmBitMe
       Begin VB.Label Label16 
          AutoSize        =   -1  'True
          Caption         =   "KB"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         BeginProperty Font 
             Name            =   "MS Sans Serif"
             Size            =   12
             Charset         =   0
@@ -301,7 +299,7 @@ Begin VB.Form frmBitMe
       Begin VB.Label labelGB 
          AutoSize        =   -1  'True
          Caption         =   "0.00"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         BeginProperty Font 
             Name            =   "MS Sans Serif"
             Size            =   12
             Charset         =   0
@@ -320,7 +318,7 @@ Begin VB.Form frmBitMe
       Begin VB.Label labelMB 
          AutoSize        =   -1  'True
          Caption         =   "0.00"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         BeginProperty Font 
             Name            =   "MS Sans Serif"
             Size            =   12
             Charset         =   0
@@ -339,7 +337,7 @@ Begin VB.Form frmBitMe
       Begin VB.Label labelKB 
          AutoSize        =   -1  'True
          Caption         =   "0.00"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         BeginProperty Font 
             Name            =   "MS Sans Serif"
             Size            =   12
             Charset         =   0
@@ -358,7 +356,7 @@ Begin VB.Form frmBitMe
    End
    Begin VB.Frame frameTime 
       Caption         =   " Duration "
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+      BeginProperty Font 
          Name            =   "Arial"
          Size            =   9
          Charset         =   0
@@ -372,6 +370,22 @@ Begin VB.Form frmBitMe
       TabIndex        =   13
       Top             =   2040
       Width           =   4815
+      Begin ComctlLib.Slider sliderTime 
+         Height          =   615
+         Left            =   120
+         TabIndex        =   2
+         Top             =   840
+         Width           =   4575
+         _ExtentX        =   8070
+         _ExtentY        =   1085
+         _Version        =   327682
+         Min             =   1
+         Max             =   540
+         SelStart        =   1
+         TickStyle       =   2
+         TickFrequency   =   60
+         Value           =   1
+      End
       Begin VB.Label Label15 
          Alignment       =   1  'Right Justify
          AutoSize        =   -1  'True
@@ -394,7 +408,7 @@ Begin VB.Form frmBitMe
       Begin VB.Label Label13 
          AutoSize        =   -1  'True
          Caption         =   ":"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         BeginProperty Font 
             Name            =   "Arial"
             Size            =   9
             Charset         =   0
@@ -414,7 +428,7 @@ Begin VB.Form frmBitMe
          AutoSize        =   -1  'True
          BackStyle       =   0  'Transparent
          Caption         =   "[           ]"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         BeginProperty Font 
             Name            =   "MS Sans Serif"
             Size            =   9.75
             Charset         =   0
@@ -434,7 +448,7 @@ Begin VB.Form frmBitMe
          Alignment       =   1  'Right Justify
          AutoSize        =   -1  'True
          Caption         =   "Seconds"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         BeginProperty Font 
             Name            =   "Arial"
             Size            =   9.75
             Charset         =   0
@@ -452,7 +466,7 @@ Begin VB.Form frmBitMe
       Begin VB.Label Label10 
          AutoSize        =   -1  'True
          Caption         =   "Minutes"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         BeginProperty Font 
             Name            =   "Arial"
             Size            =   9.75
             Charset         =   0
@@ -470,7 +484,7 @@ Begin VB.Form frmBitMe
       Begin VB.Label Label9 
          AutoSize        =   -1  'True
          Caption         =   "Hours"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         BeginProperty Font 
             Name            =   "Arial"
             Size            =   9.75
             Charset         =   0
@@ -489,7 +503,7 @@ Begin VB.Form frmBitMe
          Alignment       =   1  'Right Justify
          AutoSize        =   -1  'True
          Caption         =   "0   00"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         BeginProperty Font 
             Name            =   "MS Sans Serif"
             Size            =   9.75
             Charset         =   0
@@ -509,7 +523,7 @@ Begin VB.Form frmBitMe
          Alignment       =   1  'Right Justify
          AutoSize        =   -1  'True
          Caption         =   "0"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         BeginProperty Font 
             Name            =   "MS Sans Serif"
             Size            =   9.75
             Charset         =   0
@@ -529,7 +543,7 @@ Begin VB.Form frmBitMe
          Alignment       =   1  'Right Justify
          AutoSize        =   -1  'True
          Caption         =   "0"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         BeginProperty Font 
             Name            =   "MS Sans Serif"
             Size            =   9.75
             Charset         =   0
@@ -549,7 +563,7 @@ Begin VB.Form frmBitMe
          Alignment       =   1  'Right Justify
          AutoSize        =   -1  'True
          Caption         =   "0"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         BeginProperty Font 
             Name            =   "MS Sans Serif"
             Size            =   9.75
             Charset         =   0
@@ -565,26 +579,10 @@ Begin VB.Form frmBitMe
          Top             =   360
          Width           =   135
       End
-      Begin ComctlLib.Slider sliderTime 
-         Height          =   615
-         Left            =   120
-         TabIndex        =   2
-         Top             =   840
-         Width           =   4575
-         _ExtentX        =   8070
-         _ExtentY        =   1085
-         _Version        =   327682
-         Min             =   1
-         Max             =   540
-         SelStart        =   1
-         TickStyle       =   2
-         TickFrequency   =   60
-         Value           =   1
-      End
    End
    Begin VB.Frame frameAudio 
       Caption         =   " Audio Bitrate "
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+      BeginProperty Font 
          Name            =   "Arial"
          Size            =   9
          Charset         =   0
@@ -598,6 +596,20 @@ Begin VB.Form frmBitMe
       TabIndex        =   12
       Top             =   120
       Width           =   3015
+      Begin ComctlLib.Slider sliderAudio 
+         Height          =   630
+         Left            =   120
+         TabIndex        =   1
+         Top             =   720
+         Width           =   2775
+         _ExtentX        =   4895
+         _ExtentY        =   1111
+         _Version        =   327682
+         LargeChange     =   1
+         Max             =   18
+         TickStyle       =   2
+         TickFrequency   =   18
+      End
       Begin VB.Label Label8 
          Alignment       =   1  'Right Justify
          AutoSize        =   -1  'True
@@ -621,7 +633,7 @@ Begin VB.Form frmBitMe
          Alignment       =   1  'Right Justify
          AutoSize        =   -1  'True
          Caption         =   "kBps"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         BeginProperty Font 
             Name            =   "Arial"
             Size            =   9.75
             Charset         =   0
@@ -639,7 +651,7 @@ Begin VB.Form frmBitMe
       Begin VB.Label Label5 
          AutoSize        =   -1  'True
          Caption         =   "kbps"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         BeginProperty Font 
             Name            =   "Arial"
             Size            =   9.75
             Charset         =   0
@@ -658,7 +670,7 @@ Begin VB.Form frmBitMe
          Alignment       =   1  'Right Justify
          AutoSize        =   -1  'True
          Caption         =   "0"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         BeginProperty Font 
             Name            =   "MS Sans Serif"
             Size            =   9.75
             Charset         =   0
@@ -678,7 +690,7 @@ Begin VB.Form frmBitMe
          Alignment       =   1  'Right Justify
          AutoSize        =   -1  'True
          Caption         =   "0"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         BeginProperty Font 
             Name            =   "MS Sans Serif"
             Size            =   9.75
             Charset         =   0
@@ -694,24 +706,10 @@ Begin VB.Form frmBitMe
          Top             =   360
          Width           =   135
       End
-      Begin ComctlLib.Slider sliderAudio 
-         Height          =   630
-         Left            =   120
-         TabIndex        =   1
-         Top             =   720
-         Width           =   2775
-         _ExtentX        =   4895
-         _ExtentY        =   1111
-         _Version        =   327682
-         LargeChange     =   1
-         Max             =   18
-         TickStyle       =   2
-         TickFrequency   =   18
-      End
    End
    Begin VB.Frame frameVideo 
       Caption         =   " Video Bitrate "
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+      BeginProperty Font 
          Name            =   "Arial"
          Size            =   9
          Charset         =   0
@@ -725,6 +723,20 @@ Begin VB.Form frmBitMe
       TabIndex        =   11
       Top             =   120
       Width           =   3495
+      Begin ComctlLib.Slider sliderVideo 
+         Height          =   630
+         Left            =   120
+         TabIndex        =   0
+         Top             =   720
+         Width           =   3255
+         _ExtentX        =   5741
+         _ExtentY        =   1111
+         _Version        =   327682
+         LargeChange     =   50
+         Max             =   25000
+         TickStyle       =   2
+         TickFrequency   =   25000
+      End
       Begin VB.Label Label4 
          Alignment       =   1  'Right Justify
          AutoSize        =   -1  'True
@@ -748,7 +760,7 @@ Begin VB.Form frmBitMe
          Alignment       =   1  'Right Justify
          AutoSize        =   -1  'True
          Caption         =   "kBps"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         BeginProperty Font 
             Name            =   "Arial"
             Size            =   9.75
             Charset         =   0
@@ -766,7 +778,7 @@ Begin VB.Form frmBitMe
       Begin VB.Label Label1 
          AutoSize        =   -1  'True
          Caption         =   "kbps"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         BeginProperty Font 
             Name            =   "Arial"
             Size            =   9.75
             Charset         =   0
@@ -785,7 +797,7 @@ Begin VB.Form frmBitMe
          Alignment       =   1  'Right Justify
          AutoSize        =   -1  'True
          Caption         =   "0.0"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         BeginProperty Font 
             Name            =   "MS Sans Serif"
             Size            =   9.75
             Charset         =   0
@@ -805,7 +817,7 @@ Begin VB.Form frmBitMe
          Alignment       =   1  'Right Justify
          AutoSize        =   -1  'True
          Caption         =   "0"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         BeginProperty Font 
             Name            =   "MS Sans Serif"
             Size            =   9.75
             Charset         =   0
@@ -821,24 +833,10 @@ Begin VB.Form frmBitMe
          Top             =   360
          Width           =   135
       End
-      Begin ComctlLib.Slider sliderVideo 
-         Height          =   630
-         Left            =   120
-         TabIndex        =   0
-         Top             =   720
-         Width           =   3255
-         _ExtentX        =   5741
-         _ExtentY        =   1111
-         _Version        =   327682
-         LargeChange     =   50
-         Max             =   25000
-         TickStyle       =   2
-         TickFrequency   =   25000
-      End
    End
    Begin VB.Frame frameOptions 
       Caption         =   " Options "
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+      BeginProperty Font 
          Name            =   "Arial"
          Size            =   9
          Charset         =   0
@@ -854,7 +852,7 @@ Begin VB.Form frmBitMe
       Width           =   1215
       Begin VB.CheckBox chkDRate 
          Caption         =   " &Rate "
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         BeginProperty Font 
             Name            =   "Arial"
             Size            =   8.25
             Charset         =   0
@@ -871,7 +869,7 @@ Begin VB.Form frmBitMe
       End
       Begin VB.CheckBox chkAudio 
          Caption         =   " &Audio "
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         BeginProperty Font 
             Name            =   "Arial"
             Size            =   8.25
             Charset         =   0
@@ -888,7 +886,7 @@ Begin VB.Form frmBitMe
       End
       Begin VB.CheckBox chkVideo 
          Caption         =   " &Video "
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         BeginProperty Font 
             Name            =   "Arial"
             Size            =   8.25
             Charset         =   0
@@ -906,7 +904,9 @@ Begin VB.Form frmBitMe
    End
 End
 Attribute VB_Name = "frmBitMe"
+Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
+Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
 
