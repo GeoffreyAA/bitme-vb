@@ -3,13 +3,13 @@ Begin VB.Form frmAbout
    BorderStyle     =   1  'Fixed Single
    Caption         =   "About..."
    ClientHeight    =   5790
-   ClientLeft      =   3645
-   ClientTop       =   2160
+   ClientLeft      =   2790
+   ClientTop       =   2265
    ClientWidth     =   4485
    ClipControls    =   0   'False
    Height          =   6300
    Icon            =   "About.frx":0000
-   Left            =   3585
+   Left            =   2730
    LinkTopic       =   "Form2"
    LockControls    =   -1  'True
    MaxButton       =   0   'False
@@ -18,7 +18,7 @@ Begin VB.Form frmAbout
    ScaleMode       =   0  'User
    ScaleWidth      =   4050
    ShowInTaskbar   =   0   'False
-   Top             =   1710
+   Top             =   1815
    Width           =   4605
    Begin VB.Frame Frame2 
       Height          =   5610
@@ -30,7 +30,7 @@ Begin VB.Form frmAbout
          Height          =   135
          Left            =   240
          TabIndex        =   2
-         Top             =   1440
+         Top             =   1320
          Width           =   3735
       End
       Begin VB.Label Label4 
@@ -48,28 +48,9 @@ Begin VB.Form frmAbout
          EndProperty
          Height          =   225
          Left            =   820
-         TabIndex        =   5
+         TabIndex        =   4
          Top             =   840
          Width           =   2595
-      End
-      Begin VB.Label Label3 
-         AutoSize        =   -1  'True
-         Caption         =   "Contact: gefflovesrpg@yahoo.com"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Arial"
-            Size            =   9
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   225
-         Left            =   710
-         TabIndex        =   4
-         Top             =   1095
-         Width           =   2895
-         WordWrap        =   -1  'True
       End
       Begin VB.Label Label2 
          AutoSize        =   -1  'True
@@ -90,7 +71,7 @@ Begin VB.Form frmAbout
          Width           =   1530
       End
       Begin VB.Label Label1 
-         Caption         =   $"About.frx":1042
+         Caption         =   $"About.frx":0442
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Arial"
             Size            =   8.25
@@ -115,23 +96,20 @@ Attribute VB_Exposed = False
 
 Private Sub Form_KeyDown(KeyCode As Integer, Shift As Integer)
 
-    If KeyCode = 27 Then
-    Unload frmAbout
+    If KeyCode = vbKeyEscape Then
+        Unload frmAbout
     End If
 
 End Sub
-
 Private Sub Form_Load()
     
     Left = (Screen.Width - Width) / 2
     Top = (Screen.Height - Height) / 2
 
 End Sub
-
 Private Sub Form_Unload(Cancel As Integer)
 
     SaveSetting "BitMe", "Settings", "Splash", "No"
     frmBitMe.Visible = True
 
 End Sub
-
